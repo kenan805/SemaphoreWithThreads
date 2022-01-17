@@ -27,17 +27,18 @@ namespace SempahoreWithThreads
         public Thread ThreadP { get; set; }
         private static int _serialNumThread = 0;
         private int _semaphoreCount = 0;
+        private int _createdThreadCount = 0;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = this;
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
             Semaphore = new Semaphore(_semaphoreCount, _semaphoreCount, "Semaphore");
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < _createdThreadCount; i++)
             {
 
                 ThreadP = new Thread(() => WorkingThreads(Semaphore));
@@ -104,6 +105,21 @@ namespace SempahoreWithThreads
         {
             _semaphoreCount = Convert.ToInt32(nudSemaphorePlaces.Value);
         }
+
+        private void btnClearThreads_Click(object sender, RoutedEventArgs e)
+        {
+            if (!lbCreatedThreads.Items.IsEmpty)
+            {
+                _serialNumThread = 0;
+            }
+            Threads.Clear();
+        }
+
+        private void nudCreatedThreadCount_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            _createdThreadCount = Convert.ToInt32(nudCreatedThreadCount.Value);
+        }
+
     }
 }
 

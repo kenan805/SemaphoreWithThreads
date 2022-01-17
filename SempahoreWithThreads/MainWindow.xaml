@@ -59,7 +59,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            
+
         </Grid>
 
         <Grid Grid.Row="2">
@@ -69,8 +69,18 @@
             </StackPanel>
         </Grid>
 
+        <Grid Grid.Column="1" Grid.Row="2">
+            <StackPanel>
+                <TextBlock Text="Created thread count" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10"/>
+                <xctk:IntegerUpDown x:Name="nudCreatedThreadCount" Width="200" FontSize="18" Value="1" ValueChanged="nudCreatedThreadCount_ValueChanged" />
+            </StackPanel>
+        </Grid>
+
         <Grid Grid.Column="2" Grid.Row="2">
-            <Button x:Name="btnCreate" Content="Create New" Margin="25" FontSize="20" Click="btnCreate_Click"/>
+            <StackPanel>
+                <Button x:Name="btnCreate" Content="Create New" Margin="10,10,10,0" FontSize="20" Click="BtnCreate_Click"/>
+                <Button x:Name="btnClearThreads" Content="Clear" Margin="10,10,10,0" FontSize="20" Click="btnClearThreads_Click"/>
+            </StackPanel>
         </Grid>
 
     </Grid>
